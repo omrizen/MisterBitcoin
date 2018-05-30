@@ -9,7 +9,6 @@ class ContactFilter extends Component {
     handleInput(e) {
         console.log ('e' , e.target.value);
         this.props.setFilter(e.target.value)
-        console.log ('this.props' , this)
     }
     render() {
         return (
