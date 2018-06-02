@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { loadContacts } from '../../store/actions';
+
 import ContactList from '../../components/ContactList'
 import ContactService from '../../services/ContactService.js'
 import ContactFilter from '../../components/ContactFilter/ContactFilter'
@@ -11,28 +16,42 @@ class ContactPage extends Component {
         this.state={
             contacts:[] 
         }
-        this.loadContacts = this.loadContacts.bind(this);
+        this.loadContacts = this.loadContacts.bind (this)
     }
 
     componentDidMount(){
-        ContactService.getContacts()
-        .then(contacts => {this.setState({contacts})
-        })  
+        console.log ('this.props', this.props);
+        this.props.fetchContacts();
     }
-    loadContacts (filter){
-        ContactService.getContacts({term: filter})
-        .then(contacts=> this.setState({contacts}))
+
+    loadContacts(term){
+        this.props.fetchContacts({term});
     }
-    
+
     render() {
         return (
             <div>
                 <div> <ContactFilter setFilter={this.loadContacts}/></div>
                 <div>
-                    <ContactList  getContact={this.getContact} contacts={this.state.contacts}/>
+                    <ContactList  getContact={this.getContact} contacts={this.props.contacts}/>
                 </div>
             </div>
         )
     }
 }
-    export default ContactPage
+    // export  {ContactPage}
+
+    const mapStateToProps = (state) => {
+        return {
+            contacts: state.contactsReducer.contacts,
+        };
+      };
+      
+      const mapActionToProps = (dispatch) => {
+        return bindActionCreators({
+            fetchContacts: loadContacts
+            }, dispatch)
+      };
+      
+      // export default TodoApp;
+      export default connect(mapStateToProps, mapActionToProps)(ContactPage);

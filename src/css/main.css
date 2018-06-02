@@ -1,3 +1,11 @@
+body {
+    color:rgb(206, 205, 205);
+    /* background-image: url("http://hdblackwallpaper.com/wallpaper/2015/08/black-abstract-background-wallpaper-6-wide-wallpaper.jpg"); */
+    background-image: url("https://pagefreeclinic.org/wp-content/uploads/2016/09/background-dark-blue-1.jpg");
+    /* background-size: cover; */
+    background-repeat: repeat;
+  }
+  
 .container{
     max-width:1050px;
     margin:20px auto;
@@ -6,4 +14,14 @@
 * {
     font-family: 'Times New Roman', Times, serif;
 }
+button a {
+    color: grey;
+}
+a {
+    color:rgb(90, 88, 88);
+    text-decoration: none; 
+    outline: none;
+}
+
+
 

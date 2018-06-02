@@ -1,6 +1,6 @@
 import uniqid from 'uniqid'
 
-const contacts = [
+let contacts = [
   {
     "_id": "5a56640269f443a5d64b32ca",
     "picture":  "https://ia.media-imdb.com/images/M/MV5BMTk4MTAwMjYzNV5BMl5BanBnXkFtZTcwNjIxNTU1OA@@._V1._CR286,2,351,422_.jpg",
@@ -187,12 +187,13 @@ function deleteContact(id) {
 }
 
 function _updateContact(contact) {
+  console.log ('zzz');
   return new Promise((resolve, reject) => { 
     const index = contacts.findIndex( c => contact._id === c._id)
     if (index !== -1) {
       contacts[index] = contact
     }
-
+    
     resolve(contacts)
   })
 }
@@ -207,6 +208,7 @@ function _addContact(contact) {
 }
 
 function saveContact(contact) {
+  console.log ('moshe');
   return contact._id ? _updateContact(contact) : _addContact(contact)
 }
 
