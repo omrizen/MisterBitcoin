@@ -22,7 +22,7 @@ export function contactsReducer(state = initState, action) {
 export function userReducer(state = initState , action) {
     let newState = _.cloneDeep(state);
     switch (action.type) {
-        case types.ADD_USER:
+        case types.LOAD_USER:
             newState.user = action.payload;
             return newState;
              

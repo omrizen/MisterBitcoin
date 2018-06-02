@@ -20,7 +20,6 @@ class HomePage extends Component {
 
 
     componentWillMount() {
-        console.log('moshe');
         this.props.fetchRate();
 
     }

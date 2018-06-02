@@ -7,16 +7,15 @@ import BitcoinService from '../services/BitcoinService.js'
 export function addUser(user) {
     UserService.saveUser(user)
     return {
-        type: types.ADD_USER,
+        type: types.LOAD_USER,
         payload: user,
     };
 }
 
 export function uploadUser() {
     let user = UserService.getUser()
-    console.log ('user', user);
     return {
-        type: types.ADD_USER,
+        type: types.LOAD_USER,
         payload: user,
     };
 }
@@ -24,7 +23,7 @@ export function uploadUser() {
 export function addMove(move) {
     let user = UserService.addMove(move)
     return {
-        type: types.ADD_USER,
+        type: types.LOAD_USER,
         payload: user,
     };
 }
@@ -58,8 +57,6 @@ export function loadContacts(filter) {
 }
 
 export function fetchRate() {
-
-    
     // We return a function instead of an action object
     return (dispatch) => {
         BitcoinService.getRate()

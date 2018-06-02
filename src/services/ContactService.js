@@ -154,9 +154,6 @@ function getContacts (filterBy = null) {
     var contactsToReturn = contacts;
     if (filterBy) {
       const term = filterBy.term
-      console.log ('term' , term)
-      // const {term} = filterBy;
-      console.log ('filterBy' , filterBy)
       contactsToReturn = contacts.filter( contact => {
         
         return contact.name.toLocaleLowerCase().includes(term) ||
@@ -187,7 +184,6 @@ function deleteContact(id) {
 }
 
 function _updateContact(contact) {
-  console.log ('zzz');
   return new Promise((resolve, reject) => { 
     const index = contacts.findIndex( c => contact._id === c._id)
     if (index !== -1) {

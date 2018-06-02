@@ -15,7 +15,6 @@ class ContactEditPage extends Component {
     }
     componentDidMount() {
         if (this.props.match.params.id) {
-            console.log('there is')
             const id = this.props.match.params.id
             ContactService.getContactById(id).then(contact => {
                 this.setState({ contact })
@@ -32,7 +31,6 @@ class ContactEditPage extends Component {
         e.preventDefault();
         ContactService.saveContact(this.state.contact)
             .then(contacts => {
-                console.log('contacts', contacts)
                 this.props.history.push('/contact')
             })
 

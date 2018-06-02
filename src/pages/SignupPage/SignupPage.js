@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../../components/Input'
 import { connect } from 'react-redux';
+import {addUser} from '../../store/actions'
 import UserService from '../../services/UserService'
 
 
@@ -15,11 +16,10 @@ class SignupPage extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        
+        this.props.dispatch (addUser(this.state.user))
         this.props.history.push('/');
-
-        console.log('yoyo', e);
     }
+    
     updateInput = (obj) => {
         const user = { ...this.state.user };
         user[Object.keys(obj)[0]] = obj[Object.keys(obj)[0]]

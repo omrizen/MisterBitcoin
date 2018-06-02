@@ -29,7 +29,6 @@ class ContactDetailsPage extends Component {
             name: this.state.contact.name,
             amount
         }
-        console.log('this.move', this.move)
         this.props.dispatch(addMove(this.move));
     }
 
